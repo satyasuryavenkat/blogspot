@@ -1,0 +1,36 @@
+
+
+<div style="margin:40px;" class="conatiner">
+<div class="row">
+
+    <div class="col-md-6 show-image">
+      <% if @article.image.attached? %>
+        <%= image_tag(@article.image, :alt => "article", class:"article-image") %>
+        <%end%>
+    </div>
+    <div class="col-md-4">
+        <h4><%= @article.title%></h4>
+        <p class="text-muted"><%= @article.description%></p>
+        <% if @article.user_id == current_user.id%>
+        <%= link_to 'Edit', edit_article_path(@article), class:"btn btn-success" %>
+    <%= link_to 'Delete', article_path(@article),method: :delete,data: { confirm: 'Are you sure?' },class:"btn btn-danger" %>
+        <%end%>
+    </div>
+</div>
+
+</div>
+
+
+
+<div class="container">
+<div class="card">
+<h2 style="margin:20px;">Comments</h2>
+<div class="conatiner">
+<%= render @article.comments %>
+</div>
+ 
+<div class="container"> 
+<%= render 'comments/form' %>
+</div>
+</div>
+</div>

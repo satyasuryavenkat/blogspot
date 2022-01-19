@@ -1,0 +1,46 @@
+
+ <div class="container my-5">
+          <div class="row d-flex justify-content-center">
+              <div class="col-12">
+               
+                    <div class="carousel-inner">
+                      <div class="carousel-item active">
+                        <div class="row">
+                        <% if @articles %>
+                        <% @articles.each do |article| %>
+                        <% if article.user_id == current_user.id%>
+                            <div class="col-12 col-md-6 col-xl-3 mb-4">
+                                <div class="card mr-3">
+                                <% if article.image.attached? %>
+                                	<%= image_tag(article.image, :alt => "article", class:"card-img-top") %>
+                                    <%end%>
+                                    <div class="card-body">
+                                      <h5 class="card-title"><%= article.title %></h5>
+                                      <p class="card-text"><%= article.description[0..100] %>...</p>
+                                    
+                                    <%= link_to 'Read more', article_path(article),class:"btn btn-primary" %>
+                                    <% if article.user_id == current_user.id%>
+                                    <%= link_to 'Edit', edit_article_path(article),class:"btn btn-success btn-small" %>
+                                    <%= link_to 'Delete', article_path(article),method: :delete,data: { confirm: 'Are you sure?' },class:"btn btn-danger btn-small" %>
+                                    <%end%>
+                                    </div>
+                                </div>
+                            </div>
+                        <% end %>
+                        <%end%>
+                        <%end%>
+                            
+     
+                        </div>
+                      </div>
+
+                       
+                  </div>
+            
+          </div>
+          </div>
+
+            
+      </div>
+
+      

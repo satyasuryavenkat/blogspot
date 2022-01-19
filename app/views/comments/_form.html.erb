@@ -1,0 +1,16 @@
+
+
+<%= form_with(model: [ @article, @article.comments.build ], local: true) do |form| %>
+ <p>
+    
+    <%= form.hidden_field :commenter, value: current_user.username %>
+  </p>
+  
+  <div class="form-group">
+    <%= form.label :body %><br>
+    <%= form.text_area :body, class:"form-control form-input" %>
+  </div>
+  <p>
+    <%= form.submit class:"btn btn-primary form-button" %>
+  </p>
+<% end %>

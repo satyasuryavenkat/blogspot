@@ -1,0 +1,33 @@
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Blogspot</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/articles/new">Create Blog</a>
+              </li>
+                <li class="nav-item">
+                <a class="nav-link" href="/articles/my">My Blogs</a>
+              </li>
+            </ul>
+            <div class="d-flex">
+             
+             <% if user_signed_in? %>
+ <p style="color:white;margin:10px;">Welcome <b><%= current_user.username%></b></p>
+  
+  <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'btn btn-outline-success'  %>
+<% else %>
+     <a href="/users/sign_up" class="btn btn-outline-success" type="submit">Sign up</a>
+              &nbsp;
+      <a href="/users/sign_in" class="btn btn-outline-success" type="submit">Log in</a>
+           <% end %>
+          </div>
+          </div>
+        </div>
+      </nav>
